@@ -19,10 +19,6 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-//    public UserService(UserRepository userRepository) { // @RequireArgsConstructor is used then no need to use this constructor
-//        this.userRepository = userRepository;
-//    }
-
     public List<UserResponse> fetchAllUsers() {
         return userRepository.findAll().stream()
                 .map(this::mapToUserResponse)
