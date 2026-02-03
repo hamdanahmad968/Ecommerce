@@ -25,10 +25,11 @@ public class UserService {
                 .collect(Collectors.toList());
         }
 
-    public void addUser(UserRequest userRequest){
+    public UserResponse addUser(UserRequest userRequest){
         User user = new User();
         updateUserFromRequest(user , userRequest);
-        userRepository.save(user);
+        User savedUser = userRepository.save(user);
+        return mapToUserResponse(savedUser);
     }
 
     public Optional<UserResponse> fetchUser(Long id) {
